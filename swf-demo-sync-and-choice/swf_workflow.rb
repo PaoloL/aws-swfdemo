@@ -22,10 +22,12 @@ class SwfWorkflow
   # This is the entry point for the workflow
   def start_workflow(name)
     puts "schedule the next Activity/Step for #{name}!"
+    #number is an array of Futures object (http://docs.aws.amazon.com//amazonswf/latest/awsrbflowapi/AWS/Flow/Core/Future.html)
     numbers = []
     numbers << client_one.send_async(:set_number)
     numbers << client_two.send_async(:set_number)
     wait_for_all(numbers)
+    #get the output of activites by futures element (map method)
     sum = numbers.map! { |x| x.get }.reduce(:+)
     client_one.print_finish
     client_two.print_finish
