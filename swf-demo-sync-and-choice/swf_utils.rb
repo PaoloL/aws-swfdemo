@@ -20,7 +20,7 @@ class SwfUtils
   end
 
   #Activity Worker for a Multiple Activites Class
-  #Make two instance of activity and pass their to Workflow
+  #Make three instance of activity and pass their to Workflow
   def activity_worker
     worker = AWS::Flow::ActivityWorker.new(@domain.client, @domain, ACTIVITY_TASKLIST)
     worker.add_implementation(SwfActivityOne.new)
