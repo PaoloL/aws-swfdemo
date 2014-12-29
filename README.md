@@ -11,7 +11,7 @@ A sequence pattern refers to a workflow in which one task follows another in seq
 
 Since each activity blocks execution of the main thread when it runs, activity2 will run only after activity1 has completed. Likewise, activity3 won't run until after activity2 is complete.
 
-swf-demo-morectivity-sequence
+swf-demo-sync-sequence
 --------------------------------
 A sequence pattern refers to a workflow in which activity one and acitivity two go in parallel and activity three wait ouput from activity one and two before print it's output. 
 
