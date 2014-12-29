@@ -9,8 +9,8 @@ class SwfUtils
   DOMAIN = "DemoXpeppers2.1"
 
   AWS.config({
-    :access_key_id => 'AKIAJAK7TMVSRGTL6FNQ',
-    :secret_access_key => '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',
+    :access_key_id => 'XXXX',
+    :secret_access_key => 'XXXX',
     :region => 'us-east-1',
   })
 
