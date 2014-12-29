@@ -2,6 +2,7 @@ aws-swfdemo
 ===========
 
 A simple Amazon SWF demo with two example
+
 1) swf-demo-singleactivity-sequence: A sequence pattern refers to a workflow in which one task follows another in sequential order
 
 2) swf-demo-sync-and-choice: A pattern with a mix of async task and choice task
