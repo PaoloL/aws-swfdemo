@@ -2,11 +2,11 @@ require 'aws/decider'
 
 class SwfUtils
 
-  WF_VERSION = "2.2"
-  ACTIVITY_VERSION = "2.2"
+  WF_VERSION = "2.5"
+  ACTIVITY_VERSION = "2.5"
   WF_TASKLIST = "my_workflow_task_list"
   ACTIVITY_TASKLIST = "my_activity_task_list"
-  DOMAIN = "DemoXpeppers"
+  DOMAIN = "DemoXpeppers2.1"
 
   AWS.config({
     :access_key_id => 'AKIAJAK7TMVSRGTL6FNQ',
@@ -20,15 +20,13 @@ class SwfUtils
   end
 
   #Activity Worker for a Multiple Activites Class
-  #def activity_worker(klass)
-  #  worker = AWS::Flow::ActivityWorker.new(@domain.client, @domain, ACTIVITY_TASKLIST)
-  #  worker.add_implementation(klass.new())
-  #  worker
-  #end
-
-  #Activity Worker for a single Activites Class
-  def activity_worker(klass)
-    AWS::Flow::ActivityWorker.new(@domain.client, @domain, ACTIVITY_TASKLIST, klass)
+  #Make two instance of activity and pass their to Workflow
+  def activity_worker
+    worker = AWS::Flow::ActivityWorker.new(@domain.client, @domain, ACTIVITY_TASKLIST)
+    worker.add_implementation(SwfActivityOne.new)
+    worker.add_implementation(SwfActivityTwo.new)
+    worker.add_implementation(SwfActivityThree.new)
+    worker
   end
 
   def workflow_worker(klass)
